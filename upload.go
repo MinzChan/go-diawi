@@ -54,6 +54,10 @@ func (upRequest *UploadRequest) Upload() (*UploadResponse, error) {
 		return nil, EmptyTokenFieldError
 	}
 
+	if upRequest.Password != "" {
+		formWriter.AddField(passwordFieldName, upRequest.Password)
+	}
+
 	if upRequest.Comment != "" {
 		formWriter.AddField(commentFieldName, upRequest.Comment)
 	}
